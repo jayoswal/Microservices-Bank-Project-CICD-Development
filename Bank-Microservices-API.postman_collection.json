@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0cb9e57a-ef1a-4ed8-b18f-d0aa198f91b3",
+		"_postman_id": "bc7bc3bb-1fa4-4088-80c5-c299debd5ca3",
 		"name": "Bank-Microservices-API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "31101705"
@@ -1072,6 +1072,26 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Refresh Properties",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/actuator/refresh",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"actuator",
+												"refresh"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -1244,6 +1264,26 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Refresh Properties",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8090/actuator/refresh",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8090",
+											"path": [
+												"actuator",
+												"refresh"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -1412,6 +1452,26 @@
 											"path": [
 												"api",
 												"pwd"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Refresh Properties",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9000/actuator/refresh",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"actuator",
+												"refresh"
 											]
 										}
 									},
