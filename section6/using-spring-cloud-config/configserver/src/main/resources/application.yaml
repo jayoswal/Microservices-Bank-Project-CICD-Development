@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/jayoswal/Microservices-Configurations-Bank-Project.git"
+          default-label: main
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
+
+encrypt:
+  key: "LNF02c0ZjFLTpYeCgamfvjzU12HHdy6pqfsZZeF"
+
+server:
+  port: 8071
+  shutdown: graceful

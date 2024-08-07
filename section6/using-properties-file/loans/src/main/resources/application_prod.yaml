@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+# To get property value using @Value("${build.version}")
+build:
+  version: 3.0.0
+
+loans:
+  environment: DEFAULT - PROD
+  developer:
+    name: Jay Oswal - PROD
+    location: HQ
+  email: test@mail.com
+  contact:
+    - 12345
+    - 67890
