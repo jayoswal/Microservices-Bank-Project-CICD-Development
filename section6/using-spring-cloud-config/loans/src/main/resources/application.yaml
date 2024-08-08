@@ -5,9 +5,6 @@ spring:
   profiles:
     active: prod
 
-  config:
-    import: "configserver:http://localhost:8071/"
-
 
 server:
   port: 8090

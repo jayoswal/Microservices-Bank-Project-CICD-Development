@@ -121,7 +121,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>jayoswal20/${project.artifactId}:s6</image>
+						<image>jayoswal20/${project.artifactId}:s6.1.1</image>
 					</to>
 				</configuration>
 			</plugin>

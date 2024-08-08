@@ -1,0 +1,92 @@
+services:
+
+  #### RABBITMQ START ####
+  rabbitmq:
+    image: "rabbitmq:3.13-management"
+    container_name: "rabbitmq"
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_connectivity
+      interval: 5s
+      timeout: 2s
+      retries: 10
+      start_period: 5s
+    extends:
+      file: common-docker-compose-config.yaml
+      service: network-deploy-service
+  #### RABBITMQ END ####
+
+  #### CONFIGSERVER START ####
+  configserver:
+    image: "jayoswal20/configserver:s6.1.0"
+    container_name: "configserver"
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-base-config
+  #### CONFIGSERVER END ####
+
+  #### CARDS MICROERVICE ####
+  cards:
+    image: "jayoswal20/cards:s6.1.3"
+    container_name: "cards-ms"
+    ports:
+      - "9000:9000"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+  #### CARDS END ####
+
+  #### ACCOUNTS  START ####
+  accounts:
+    image: "jayoswal20/accounts:s6.1.1"
+    container_name: "accounts-ms"
+    ports:
+      - "8080:8080"
+    depends_on:
+      configserver:
+        condition: service_healthy
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+  #### ACCOUNTS  END ####
+
+  #### LOANS START ####
+  loans:
+    image: "jayoswal20/loans:s6.1.1"
+    container_name: "loans-ms"
+    ports:
+      - "8090:8090"
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+    depends_on:
+      configserver:
+        condition: service_healthy
+  #### LOANS END ####
+
+#### DOCKER NETWORK START ####
+networks:
+  bank-network:
+    driver: "bridge"
+#### DOCKER NETWORK END ####
+
+
+
+

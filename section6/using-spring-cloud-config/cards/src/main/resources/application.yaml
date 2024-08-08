@@ -4,8 +4,14 @@ spring:
   profiles:
     active:
       - prod
-  config:
-    import: "configserver:http://localhost:8071/"
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        core:
+          env=DEBUG:
 
 server:
   port: 9000
