@@ -1092,6 +1092,26 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "BusRefresh",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/actuator/busrefresh",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"actuator",
+												"busrefresh"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -1508,7 +1528,7 @@
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "http://localhost:8071/cards/prod",
+											"raw": "http://localhost:8071/cards/dev",
 											"protocol": "http",
 											"host": [
 												"localhost"
@@ -1516,7 +1536,7 @@
 											"port": "8071",
 											"path": [
 												"cards",
-												"prod"
+												"dev"
 											]
 										}
 									},
@@ -1577,7 +1597,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "cb810f2d416826fc79d17f4931f388477fb632fe38329ab41fdd514740929f42",
+											"raw": "5ee79922a05da54d545a6c6ba3806b9bdaa9ef03d70eb25fc859a0fbf3de5cb4",
 											"options": {
 												"raw": {
 													"language": "text"
@@ -1597,8 +1617,837 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Liveness",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8071/actuator/health/liveness",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8071",
+											"path": [
+												"actuator",
+												"health",
+												"liveness"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Rediness",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8071/actuator/health/readiness",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8071",
+											"path": [
+												"actuator",
+												"health",
+												"readiness"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Monitor",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8071/actuator/monitor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8071",
+											"path": [
+												"actuator",
+												"monitor"
+											]
+										}
+									},
+									"response": []
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Section7",
+			"item": [
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "Create Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Account",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\",\n    \"accountsDto\": {\n        \"accountNumber\": 1714670478,\n        \"accountType\": \"Savingsdddd\",\n        \"branchAddress\": \"123 Main Street, New York\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Account Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Account",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/delete?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Build Version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/build-version",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get pwd",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/pwd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"pwd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Developer Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/developer-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"developer-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actuator Health",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/health",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Properties",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Loans",
+					"item": [
+						{
+							"name": "Create Loan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/create?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Loan",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"2222222222\",\n    \"loanNumber\": \"100531440315\",\n    \"loanType\": \"Home Loan\",\n    \"totalLoan\": 100000,\n    \"amountPaid\": 50000,\n    \"outstandingAmount\": 50000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8090/api/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Loan Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Loan",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/delete?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Developer Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/developer-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"developer-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Build Version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/build-version",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get pwd",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/pwd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"pwd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Properties",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cards",
+					"item": [
+						{
+							"name": "Create Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/create?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Card",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"2222222222\",\n    \"cardNumber\": \"100782644058\",\n    \"cardType\": \"Credit Card 222\",\n    \"totalLimit\": 100000,\n    \"amountUsed\": 50000,\n    \"availableAmount\": 50000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9000/api/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Card Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Card",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/delete?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Developer Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/developer-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"developer-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Build Version",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/build-version",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"build-version"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get pwd",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/pwd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"pwd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Properties",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Config Server",
+					"item": [
+						{
+							"name": "Get Accounts Properties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/accounts/prod",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"accounts",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Cards Properties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/cards/dev",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"cards",
+										"dev"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Loans Properties",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/loans/prod",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"loans",
+										"prod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Encrypt",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "sa",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8071/encrypt",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"encrypt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Decrypt",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "5ee79922a05da54d545a6c6ba3806b9bdaa9ef03d70eb25fc859a0fbf3de5cb4",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8071/decrypt",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"decrypt"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Liveness",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/actuator/health/liveness",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"actuator",
+										"health",
+										"liveness"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Rediness",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/actuator/health/readiness",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"actuator",
+										"health",
+										"readiness"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
