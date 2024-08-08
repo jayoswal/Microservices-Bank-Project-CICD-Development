@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: loans
+
+  profiles:
+    active: prod
+
+
+server:
+  port: 8090
+  shutdown: graceful
+
+

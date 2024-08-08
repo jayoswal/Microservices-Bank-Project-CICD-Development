@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: accounts
+
+  profiles:
+    active: prod
+
+server:
+  port: 8080
+  shutdown: graceful
+
+
+

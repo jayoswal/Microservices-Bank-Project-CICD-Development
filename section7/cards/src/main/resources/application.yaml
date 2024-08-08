@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: cards
+  profiles:
+    active:
+      - prod
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        core:
+          env=DEBUG:
+
+server:
+  port: 9000
+  shutdown: graceful
+
+

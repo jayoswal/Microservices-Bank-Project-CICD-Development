@@ -1,0 +1,145 @@
+services:
+
+  #### MYSQL ACCOUNTS START ####
+  accountsdb:
+    image: mysql:oraclelinux9
+    container_name: accountsdb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: accountsdb
+    extends:
+      file: common-docker-compose-config.yaml
+      service: network-deploy-service
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+  #### MYSQL ACCOUNTS END ####
+
+  #### MYSQL CARDS START ####
+  cardsdb:
+    image: mysql:oraclelinux9
+    container_name: cardsdb
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: cardsdb
+    extends:
+      file: common-docker-compose-config.yaml
+      service: network-deploy-service
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+  #### MYSQL CARDS END ####
+
+  #### MYSQL LOANS START ####
+  loansdb:
+    image: mysql:oraclelinux9
+    container_name: loansdb
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: loansdb
+    extends:
+      file: common-docker-compose-config.yaml
+      service: network-deploy-service
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+      interval: 10s
+      start_period: 10s
+  #### MYSQL LOANS END ####
+
+
+
+  #### CONFIGSERVER START ####
+  configserver:
+    image: "jayoswal20/configserver:s6.1.0"
+    container_name: "configserver"
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-base-config
+  #### CONFIGSERVER END ####
+
+  #### CARDS MICROERVICE ####
+  cards:
+    image: "jayoswal20/cards:s7.1.0"
+    container_name: "cards-ms"
+    ports:
+      - "9000:9000"
+    depends_on:
+      configserver:
+        condition: service_healthy
+      cardsdb:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://cardsdb:3306/cardsdb
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+  #    TODO - create image with platform flag (no amd)
+  #### CARDS END ####
+
+  #### ACCOUNTS  START ####
+  accounts:
+    image: "jayoswal20/accounts:s7.1.0"
+    container_name: "accounts-ms"
+    ports:
+      - "8080:8080"
+    depends_on:
+      configserver:
+        condition: service_healthy
+      accountsdb:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://accountsdb:3306/accountsdb
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+  #### ACCOUNTS  END ####
+
+  #### LOANS START ####
+  loans:
+    image: "jayoswal20/loans:s7.1.0"
+    container_name: "loans-ms"
+    ports:
+      - "8090:8090"
+    extends:
+      file: common-docker-compose-config.yaml
+      service: microservice-configserver-config
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://loansdb:3306/loansdb
+    depends_on:
+      configserver:
+        condition: service_healthy
+      loansdb:
+        condition: service_healthy
+  #### LOANS END ####
+
+#### DOCKER NETWORK START ####
+networks:
+  bank-network:
+    driver: "bridge"
+#### DOCKER NETWORK END ####
+
+
+
+
