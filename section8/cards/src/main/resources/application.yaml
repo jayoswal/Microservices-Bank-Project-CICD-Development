@@ -1,0 +1,17 @@
+spring:
+
+  application:
+    name: cards
+
+  profiles:
+    active:
+      - prod
+
+  config:
+    import: configserver:http://localhost:8071/
+
+server:
+  port: 9000
+  shutdown: graceful
+
+
