@@ -134,7 +134,6 @@ networks:
   bank-network:
     driver: "bridge"
 #### DOCKER NETWORK END ####
-#
 
 
 

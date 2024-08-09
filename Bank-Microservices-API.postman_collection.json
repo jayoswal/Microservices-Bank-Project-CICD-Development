@@ -2452,6 +2452,755 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Section8",
+			"item": [
+				{
+					"name": "Eureka Server",
+					"item": [
+						{
+							"name": "Eureka Dashboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8070/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eureka Apps",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8070/eureka/apps",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"eureka",
+										"apps"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eureka Apps JSON Header",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8070/eureka/apps/accounts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"eureka",
+										"apps",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eureka Single App",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8070/eureka/apps/loans",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"eureka",
+										"apps",
+										"loans"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Config Server",
+					"item": [
+						{
+							"name": "Accounts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8071/accounts/default",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8071",
+									"path": [
+										"accounts",
+										"default"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Accounts",
+					"item": [
+						{
+							"name": "App Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shutdown",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/actuator/shutdown",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Account Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Account Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch All Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/fetchAllDetails?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"fetchAllDetails"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Developer Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/developer-info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"developer-info"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cards",
+					"item": [
+						{
+							"name": "Shutdown",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/actuator/shutdown",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Card",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/create?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Card Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9000/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9000",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Loans",
+					"item": [
+						{
+							"name": "Shutdown",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/actuator/shutdown",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Loan",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/create?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Loan Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/fetch?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"fetch"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Loan",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"mobileNumber\": \"2222222222\",\n    \"loanNumber\": \"100347125037\",\n    \"loanType\": \"Home Loan\",\n    \"totalLoan\": 100000,\n    \"amountPaid\": 50000,\n    \"outstandingAmount\": 50000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8090/api/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Loan",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/api/delete?mobileNumber=2222222222",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"api",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "2222222222"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "App Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8090/actuator/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8090",
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Load Balancing",
+					"item": [
+						{
+							"name": "Accounts",
+							"item": [
+								{
+									"name": "Create Account Instance 1",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/create",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Fetch Account Details Backup Instance",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/api/fetch?mobileNumber=2222222222",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"api",
+												"fetch"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "2222222222"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Loans",
+							"item": [
+								{
+									"name": "Create Loan in Loans 1",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8090/api/create?mobileNumber=2222222222",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8090",
+											"path": [
+												"api",
+												"create"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "2222222222"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Fetch All Customer Details",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/api/fetchAllDetails?mobileNumber=2222222222",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"fetchAllDetails"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "2222222222"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Account",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8080/api/create",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"api",
+												"create"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create Card",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9000/api/create?mobileNumber=2222222222",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9000",
+											"path": [
+												"api",
+												"create"
+											],
+											"query": [
+												{
+													"key": "mobileNumber",
+													"value": "2222222222"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
 		}
 	]
 }
