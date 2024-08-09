@@ -1,0 +1,119 @@
+services:
+
+  #### CONFIGSERVER START ####
+  configserver:
+    image: "jayoswal20/configserver:s8.0.0"
+    container_name: "configserver"
+    ports:
+      - "8071:8071"
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - bank-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  #### CONFIGSERVER END ####
+
+  #### EUREKA SERVER START ####
+  eurekaserver:
+    image: "jayoswal20/eurekaserver:s8.0.0"
+    container_name: "eurekaserver"
+    ports:
+      - "8070:8070"
+    healthcheck:
+      test: "curl --fail --silent localhost:8070/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    environment:
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+    networks:
+      - bank-network
+    depends_on:
+      configserver:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+  #### EUREKA SERVER END ####
+
+  #### ACCOUNTS  START ####
+  accounts:
+    image: "jayoswal20/accounts:s8.0.0"
+    container_name: "accounts-ms"
+    ports:
+      - "8080:8080"
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+    networks:
+      - bank-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+  #### ACCOUNTS  END ####
+
+  #### CARDS START ####
+  cards:
+    image: "jayoswal20/cards:s8.0.0"
+    container_name: "cards-ms"
+    ports:
+      - "9000:9000"
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+    networks:
+      - bank-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+  #### CARDS END ####
+
+  #### LOANS START ####
+  loans:
+    image: "jayoswal20/loans:s8.0.0"
+    container_name: "loans-ms"
+    ports:
+      - "8090:8090"
+    depends_on:
+      eurekaserver:
+        condition: service_healthy
+    networks:
+      - bank-network
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    environment:
+      SPRING_PROFILES_ACTIVE: default
+      SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eurekaserver:8070/eureka/
+  #### LOANS END ####
+
+#### DOCKER NETWORK START ####
+networks:
+  bank-network:
+    driver: "bridge"
+#### DOCKER NETWORK END ####
+
+
+
+
