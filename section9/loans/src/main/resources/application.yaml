@@ -1,0 +1,17 @@
+spring:
+
+  application:
+    name: loans
+
+  profiles:
+    active: prod
+
+  config:
+    import: ${SPRING_CONFIG_IMPORT:configserver:http://localhost:8071/}
+
+
+server:
+  port: 8090
+  shutdown: graceful
+
+
