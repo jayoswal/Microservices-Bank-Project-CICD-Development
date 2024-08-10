@@ -2643,7 +2643,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay@jay.com\",\n    \"mobileNumber\": \"2222222222\"\n}",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay2@jay.com\",\n    \"mobileNumber\": \"1111111111\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2726,7 +2726,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8080/api/fetch?mobileNumber=2222222222",
+									"raw": "http://localhost:8080/api/fetch?mobileNumber=1111111111",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -2739,7 +2739,7 @@
 									"query": [
 										{
 											"key": "mobileNumber",
-											"value": "2222222222"
+											"value": "1111111111"
 										}
 									]
 								}
@@ -2823,7 +2823,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:9000/api/create?mobileNumber=2222222222",
+									"raw": "http://localhost:9000/api/create?mobileNumber=1111111111",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -2836,7 +2836,7 @@
 									"query": [
 										{
 											"key": "mobileNumber",
-											"value": "2222222222"
+											"value": "1111111111"
 										}
 									]
 								}
@@ -2900,7 +2900,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8090/api/create?mobileNumber=2222222222",
+									"raw": "http://localhost:8090/api/create?mobileNumber=1111111111",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -2913,7 +2913,7 @@
 									"query": [
 										{
 											"key": "mobileNumber",
-											"value": "2222222222"
+											"value": "1111111111"
 										}
 									]
 								}
@@ -3199,6 +3199,377 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Section9",
+			"item": [
+				{
+					"name": "Gateway Server",
+					"item": [
+						{
+							"name": "See Routes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/actuator/gateway/routes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"actuator",
+										"gateway",
+										"routes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Account Bank Route",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay3@jay.com\",\n    \"mobileNumber\": \"3333333333\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8072/bank/accounts/api/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"accounts",
+										"api",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Card Bank Route",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/bank/cards/api/create?mobileNumber=3333333333",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"cards",
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "3333333333"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch All Details Bank Route",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/bank/accounts/api/fetchAllDetails?mobileNumber=3333333333",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"accounts",
+										"api",
+										"fetchAllDetails"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "3333333333"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Loan Bank Route",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/bank/loans/api/create?mobileNumber=3333333333",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"loans",
+										"api",
+										"create"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "3333333333"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Account",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"JayOswal\",\n    \"email\": \"jay1@jay.com\",\n    \"mobileNumber\": \"1111111111\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8072/bank/accounts/api/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"accounts",
+										"api",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actuator Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/actuator/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"actuator",
+										"info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch All Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/bank/accounts/api/fetchAllDetails?mobileNumber=1111111111",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"bank",
+										"accounts",
+										"api",
+										"fetchAllDetails"
+									],
+									"query": [
+										{
+											"key": "mobileNumber",
+											"value": "1111111111"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cards Shutdown",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/cards/actuator/shutdown",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"cards",
+										"actuator",
+										"shutdown"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Gatewarserver Props",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8072/actuator/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8072",
+									"path": [
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Accounts Health Readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/health/readiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ConfigServer Health Readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8071/actuator/health/readiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8071",
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cards Health Readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/actuator/health/readiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eureka Server Health Readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8070/actuator/health/readiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8070",
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Loans Health Readiness",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/actuator/health/readiness",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"actuator",
+								"health",
+								"readiness"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

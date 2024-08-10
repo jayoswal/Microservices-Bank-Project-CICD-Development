@@ -82,7 +82,7 @@
 				<version>3.3.2</version>
 				<configuration>
 					<to>
-						<image>jayoswal20/${project.artifactId}:s8.0.0</image>
+						<image>jayoswal20/${project.artifactId}:s9.0.0</image>
 					</to>
 				</configuration>
 			</plugin>
