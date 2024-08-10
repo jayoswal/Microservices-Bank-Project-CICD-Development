@@ -27,7 +27,7 @@ public class CustomerServiceImpl implements ICustomerService {
      * @return Customer's all details based on given mobile number
      */
     @Override
-    public CustomerAllDetailsDto fetchAllDetails(String mobileNumber) {
+    public CustomerAllDetailsDto fetchAllDetails(String mobileNumber, String correlationID) {
         CustomerAllDetailsDto customerAllDetailsDto = new CustomerAllDetailsDto();
 
         Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
@@ -41,9 +41,9 @@ public class CustomerServiceImpl implements ICustomerService {
 
         // TODO - exception if cards or loans ms gives error - getStatus
         // example - delete loans and try to fetch through fetchAllDetail
-        CardsDto cardsDto = iCardsFeignClient.fetchCardDetails(mobileNumber).getBody();
+        CardsDto cardsDto = iCardsFeignClient.fetchCardDetails(correlationID, mobileNumber).getBody();
 
-        LoansDto loansDto = iLoansFeignClient.fetchLoanDetails(mobileNumber).getBody();
+        LoansDto loansDto = iLoansFeignClient.fetchLoanDetails(correlationID, mobileNumber).getBody();
 
         // TODO - create a mapper
         customerAllDetailsDto.setCardsDto(cardsDto);
