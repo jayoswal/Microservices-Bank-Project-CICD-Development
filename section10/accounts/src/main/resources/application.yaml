@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: accounts
+
+  profiles:
+    active: prod
+
+  config:
+    import: ${SPRING_CONFIG_IMPORT:configserver:http://localhost:8071/}
+
+server:
+  port: 8080
+  shutdown: graceful
+
+
+

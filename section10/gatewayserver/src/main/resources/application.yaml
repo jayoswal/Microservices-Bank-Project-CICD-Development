@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: "gatewayserver"
+  config:
+    import: ${SPRING_CONFIG_IMPORT:configserver:http://localhost:8071/}
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+
+
