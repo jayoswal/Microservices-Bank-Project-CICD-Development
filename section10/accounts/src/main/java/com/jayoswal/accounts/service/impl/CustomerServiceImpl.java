@@ -11,6 +11,7 @@ import com.jayoswal.accounts.service.ICardsFeignClient;
 import com.jayoswal.accounts.service.ICustomerService;
 import com.jayoswal.accounts.service.ILoansFeignClient;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -41,13 +42,22 @@ public class CustomerServiceImpl implements ICustomerService {
 
         // TODO - exception if cards or loans ms gives error - getStatus
         // example - delete loans and try to fetch through fetchAllDetail
-        CardsDto cardsDto = iCardsFeignClient.fetchCardDetails(correlationID, mobileNumber).getBody();
+        ResponseEntity<CardsDto> cardsDto = iCardsFeignClient.fetchCardDetails(correlationID, mobileNumber);
 
-        LoansDto loansDto = iLoansFeignClient.fetchLoanDetails(correlationID, mobileNumber).getBody();
+        if(cardsDto != null) {
+            customerAllDetailsDto.setCardsDto(cardsDto.getBody());
+        }
 
+        ResponseEntity<LoansDto> loansDto = iLoansFeignClient.fetchLoanDetails(correlationID, mobileNumber);
+
+        if(loansDto != null) {
+            customerAllDetailsDto.setLoansDto(loansDto.getBody());
+
+        }
         // TODO - create a mapper
-        customerAllDetailsDto.setCardsDto(cardsDto);
-        customerAllDetailsDto.setLoansDto(loansDto);
+
+
+
         customerAllDetailsDto.setAccountsDto(AccountsMapper.mapToAccountsDto(accounts, new AccountsDto()));
         customerAllDetailsDto.setName(customer.getName());
         customerAllDetailsDto.setEmail(customer.getEmail());

@@ -8,9 +8,22 @@ spring:
   config:
     import: ${SPRING_CONFIG_IMPORT:configserver:http://localhost:8071/}
 
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
 server:
   port: 8080
   shutdown: graceful
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
 
 
 
